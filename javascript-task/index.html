@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<input type="text" id="name" placeholder="Email" />
+<input type="password" id="password" placeholder="Password" />
+<button type="submit" onclick="abc()">Submit</button>
+<p id="para"></p>
+<script>
+	function abc () {
+		var a= ['khurramkim', 12345];
+		var user = document.getElementById('name').value;
+		var pass = document.getElementById('password').value;
+		if (user == a[0] && pass == a[1]) {
+			document.getElementById('para').innerHTML="Welcome You are in";
+		}
+		else {
+			document.getElementById('para').innerHTML="Sorry you put wrong details";
+		}
+	}
+	
+</script>
+</body>
+</html>

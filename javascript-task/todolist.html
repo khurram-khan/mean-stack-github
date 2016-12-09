@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<input type="text" id="field" placeholder="Type name" />
+<button type="submit" onclick="insertitem()">Submit</button>
+<p id="para"></p>
+<script>
+	var list = [];
+var input;
+function insertitem() {
+    input = document.getElementById('field').value;
+    list.push(input);
+    DisplayItem(list);
+    document.getElementById('field').value='';
+
+}
+function DisplayItem(data) {
+    var contain = document.getElementById('para');
+    contain.innerHTML='';
+    for ( var i in data) {
+        contain.innerHTML +="<div><label><input class='box' onClick='remove(this)' type='checkbox' />" + data[i] + 
+          "</label></div>";
+    }
+}
+function remove(that) {
+    var check = that.parentElement.textContent;
+    for ( var i in list) {
+        if (list[i] == check) {
+              list.splice(list.indexOf(check),1);
+        }
+    }
+ // console.log(list)
+ DisplayItem(list);
+}
+	
+</script>
+</body>
+</html>

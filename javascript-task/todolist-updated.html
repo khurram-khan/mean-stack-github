@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<style>
+.center-block {
+	margin:0 auto;
+	float:none;
+}
+#box {
+	padding:15px;
+	background:#CCC;
+	border-radius:5px;
+	margin-top:15px;
+}
+label {
+	display:block;
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+	<div class="row">
+    	<section class="col-lg-4 center-block">
+        	<h2 class="text-center">Todo list</h2>
+      		<div class="input-group">
+              <input id="ws-input" type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" onclick="insert()" type="button">Submit</button>
+              </span>
+            </div><!-- /input-group -->
+            <div id="box"></div>  
+        </section>
+    </div>
+</div>
+<script>
+var list = [];
+var input = '';
+var content = document.getElementById('box');
+loads ();
+window.onload =function () {
+	if (list.length == '') {
+		content.innerHTML='Your list is empty !';
+	}
+}
+
+function insert() {
+	input = document.getElementById('ws-input').value;
+	list.push(input);
+	show(list);
+	document.getElementById('ws-input').value ='';
+}
+function show(data) {
+	content.innerHTML='';
+	for (var a in data) {
+		content.innerHTML += "<label><input id=" + a + " type='checkbox' onClick='remove(this.id)' /> " + data[a] + "</label>"
+	}
+	save();
+}
+function remove(id) {
+	var get = document.getElementById(id);
+	if (get.checked == true) {
+		var index = list.indexOf(get.parentNode.innerText);
+		list.splice(index,1);
+		get.parentNode.remove();
+		if (list == '') {
+			content.innerHTML='Your list is empty !';
+			input = document.getElementById('ws-input').focus();	
+		}
+		save ();
+	}
+	
+}
+function save(){
+    localStorage.myList = JSON.stringify(list);
+}
+
+function loads(){
+    list = JSON.parse(localStorage.myList);
+    show(list);
+}
+</script>
+</body>
+</html>

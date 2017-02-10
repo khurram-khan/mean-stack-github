@@ -1,0 +1,32 @@
+<% include header %>
+	<% if(err) { %>
+		<h2><%= err %></h2>
+	<% } %>
+    <div class="container">
+		<div class="row">
+			<div style="float:none; margin:0 auto;" class="col-lg-6">		
+				<form class="form-horizontal" role="form" method="post" action="/login">
+                <h2 class="text-center">Login Form</h2>
+                
+                <div class="form-group">
+                    <label for="email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="Email" name="email" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" name="pass" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </div>
+                </div>
+            </form> <!-- /form -->
+			</div>
+		</div>
+        </div> <!-- ./container -->
+<% include footer %>
